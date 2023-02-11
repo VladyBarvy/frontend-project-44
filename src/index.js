@@ -17,11 +17,49 @@ const questionOfGame = (nameOfTheGame) => {
     if(nameOfTheGame === "brainCalc") {
         console.log("What is the result of the expression?");
     }
+
+    if(nameOfTheGame === "brainGcd") {
+        console.log("Find the greatest common divisor of given numbers.");
+    }
 };
 
 
 
-const brainCalcQuestion = (nameOfGamer) => {
+const brainEvenGame = (nameOfGamer) => {
+    let numberOfGoodAnswer = 0;
+    for(let i = 0; i < 3; i += 1) {
+        let randomNumber = Math.floor(Math.random() * 100) + 1;
+        console.log('Question: ' + randomNumber);
+        let userAnswer = readlineSync.question('Your answer: ');
+        if ((randomNumber % 2 === 0) && (userAnswer === 'yes')) {
+            console.log('Correct!');
+            numberOfGoodAnswer += 1;
+        }
+        if ((randomNumber % 2 === 0) && (userAnswer === 'no')) {
+            console.log("'no' is wrong answer ;(. Correct answer was 'yes'.");
+            console.log("Let's try again, " + nameOfGamer + '!');
+        }
+        if ((randomNumber % 2 != 0) && (userAnswer === 'no')) {
+            console.log('Correct!');
+            numberOfGoodAnswer += 1;
+        }
+        if ((randomNumber % 2 != 0) && (userAnswer === 'yes')) {
+            console.log("'yes' is wrong answer ;(. Correct answer was 'no'.");
+            console.log("Let's try again, " + nameOfGamer + '!');
+        }
+        if ((userAnswer != 'yes') && (userAnswer != 'no')) {
+            console.log("Wrong answer ;(.");
+            console.log("Let's try again, " + nameOfGamer + '!');
+        }
+    }
+    if (numberOfGoodAnswer === 3) {
+        console.log("Congratulations, " + nameOfGamer + '!');
+    }
+};
+
+
+
+const brainCalcGame = (nameOfGamer) => {
     let numberOfGoodAnswer = 0;
   
     for(let i = 0; i < 3; i += 1) {
@@ -62,36 +100,50 @@ const brainCalcQuestion = (nameOfGamer) => {
     }
 };
 
-const brainEvenGame = (nameOfGamer) => {
-    let numberOfGoodAnswer = 0;
-    for(let i = 0; i < 3; i += 1) {
-        let randomNumber = Math.floor(Math.random() * 100) + 1;
-        console.log('Question: ' + randomNumber);
-        let userAnswer = readlineSync.question('Your answer: ');
-        if ((randomNumber % 2 === 0) && (userAnswer === 'yes')) {
-            console.log('Correct!');
-            numberOfGoodAnswer += 1;
-        }
-        if ((randomNumber % 2 === 0) && (userAnswer === 'no')) {
-            console.log("'no' is wrong answer ;(. Correct answer was 'yes'.");
-            console.log("Let's try again, " + nameOfGamer + '!');
-        }
-        if ((randomNumber % 2 != 0) && (userAnswer === 'no')) {
-            console.log('Correct!');
-            numberOfGoodAnswer += 1;
-        }
-        if ((randomNumber % 2 != 0) && (userAnswer === 'yes')) {
-            console.log("'yes' is wrong answer ;(. Correct answer was 'no'.");
-            console.log("Let's try again, " + nameOfGamer + '!');
-        }
-        if ((userAnswer != 'yes') && (userAnswer != 'no')) {
-            console.log("Wrong answer ;(.");
-            console.log("Let's try again, " + nameOfGamer + '!');
+
+
+
+const euclidAlgorithm = (num1, num2) => {
+    let resultOfCalculation = 0;
+    while ((num1 != 0) && (num2 != 0)) {
+        if (num1 > num2) {
+            num1 = num1 % num2;
+        } else {
+            num2 = num2 % num1;
         }
     }
+    resultOfCalculation = num1 + num2;
+    return resultOfCalculation;
+};
+
+
+const brainGcdGame = (nameOfGamer) => {
+    let numberOfGoodAnswer = 0;
+
+    for(let i = 0; i < 3; i += 1) {
+        let resultOfExpression = 0; 
+        let randomNumber1 = Math.floor(Math.random() * 100) + 1;
+        let randomNumber2 = Math.floor(Math.random() * 100) + 1;
+
+        console.log('Question: ' + randomNumber1 + ' ' + randomNumber2);
+        resultOfExpression = euclidAlgorithm(randomNumber1, randomNumber2);
+
+        let userAnswer = readlineSync.question('Your answer: ');
+
+        if (parseInt (userAnswer) === resultOfExpression) {
+            console.log('Correct!');
+            numberOfGoodAnswer += 1;
+        } else {
+            console.log('"' + userAnswer + '"' + " is wrong answer ;(. Correct answer was " + '"' + resultOfExpression + '"' + '.');
+            console.log("Let's try again, " + nameOfGamer + '!');
+        }
+
+    }
+
     if (numberOfGoodAnswer === 3) {
         console.log("Congratulations, " + nameOfGamer + '!');
     }
+
 };
 
-export { whatIsYourName, questionOfGame, brainCalcQuestion, brainEvenGame };
+export { whatIsYourName, questionOfGame, brainCalcGame, brainEvenGame, brainGcdGame };
