@@ -21,6 +21,10 @@ const questionOfGame = (nameOfTheGame) => {
     if(nameOfTheGame === "brainGcd") {
         console.log("Find the greatest common divisor of given numbers.");
     }
+
+    if(nameOfTheGame === "brainProgression") {
+        console.log("What number is missing in the progression?");
+    }
 };
 
 
@@ -146,4 +150,51 @@ const brainGcdGame = (nameOfGamer) => {
 
 };
 
-export { whatIsYourName, questionOfGame, brainCalcGame, brainEvenGame, brainGcdGame };
+
+
+const brainProgressionGame = (nameOfGamer) => {
+    let numberOfGoodAnswer = 0;
+    
+
+    for(let i = 0; i < 3; i += 1) {
+        let arithmeticProgression = 0;
+        let arithmProgressString;
+        let arithmProgressionMassive = [];
+        let controlHiddenElement = 0;
+        let startNumberOfProgress = Math.floor(Math.random() * (20 - 2) + 2);
+        let stepOfProgress = Math.floor(Math.random() * (10 - 2) + 2);
+        let hiddenElement = Math.floor(Math.random() * (9 - 1) + 1);
+
+        arithmeticProgression = startNumberOfProgress; 
+        arithmProgressString = arithmeticProgression;
+
+        for (let i = 0; i < 9; i += 1) {
+            arithmeticProgression = arithmeticProgression + stepOfProgress;
+            arithmProgressionMassive.push(arithmeticProgression);  
+        }
+
+        controlHiddenElement = arithmProgressionMassive[hiddenElement];
+        arithmProgressionMassive[hiddenElement] = '..';
+
+        for (let a = 0; a < 9; a += 1) {
+        arithmProgressString = arithmProgressString + ' ' + arithmProgressionMassive[a];
+        }
+
+        console.log('Question: ' + arithmProgressString);
+        let userAnswer = readlineSync.question('Your answer: ');
+
+        if (parseInt (userAnswer) === controlHiddenElement) {
+            console.log('Correct!');
+            numberOfGoodAnswer += 1;
+        } else {
+            console.log('"' + userAnswer + '"' + " is wrong answer ;(. Correct answer was " + '"' + controlHiddenElement + '"' + '.');
+            console.log("Let's try again, " + nameOfGamer + '!');
+        }
+    }
+
+    if (numberOfGoodAnswer === 3) {
+        console.log("Congratulations, " + nameOfGamer + '!');
+    }
+};
+
+export { whatIsYourName, questionOfGame, brainCalcGame, brainEvenGame, brainGcdGame, brainProgressionGame };
