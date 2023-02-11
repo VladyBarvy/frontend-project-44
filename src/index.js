@@ -10,20 +10,24 @@ const whatIsYourName = () => {
 
 
 const questionOfGame = (nameOfTheGame) => {
-    if(nameOfTheGame === "brainEven") {
+    if (nameOfTheGame === "brainEven") {
         console.log("Answer 'yes' if the number is even, otherwise answer 'no'.");
     }
 
-    if(nameOfTheGame === "brainCalc") {
+    if (nameOfTheGame === "brainCalc") {
         console.log("What is the result of the expression?");
     }
 
-    if(nameOfTheGame === "brainGcd") {
+    if (nameOfTheGame === "brainGcd") {
         console.log("Find the greatest common divisor of given numbers.");
     }
 
-    if(nameOfTheGame === "brainProgression") {
+    if (nameOfTheGame === "brainProgression") {
         console.log("What number is missing in the progression?");
+    }
+
+    if (nameOfTheGame === "brainPrime") {
+        console.log("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
     }
 };
 
@@ -31,7 +35,7 @@ const questionOfGame = (nameOfTheGame) => {
 
 const brainEvenGame = (nameOfGamer) => {
     let numberOfGoodAnswer = 0;
-    for(let i = 0; i < 3; i += 1) {
+    for (let i = 0; i < 3; i += 1) {
         let randomNumber = Math.floor(Math.random() * 100) + 1;
         console.log('Question: ' + randomNumber);
         let userAnswer = readlineSync.question('Your answer: ');
@@ -66,23 +70,23 @@ const brainEvenGame = (nameOfGamer) => {
 const brainCalcGame = (nameOfGamer) => {
     let numberOfGoodAnswer = 0;
   
-    for(let i = 0; i < 3; i += 1) {
+    for (let i = 0; i < 3; i += 1) {
         let resultOfExpression = 0; 
         let randomNumber1 = Math.floor(Math.random() * 100) + 1;
         let randomNumber2 = Math.floor(Math.random() * 100) + 1;
         let typeOfOperation = Math.floor(Math.random() * 100) + 1;
     
-        if(typeOfOperation < 33) {
+        if (typeOfOperation < 33) {
             console.log('Question: ' + randomNumber1 + '+' + randomNumber2);
             resultOfExpression = randomNumber1 + randomNumber2;
         }
 
-        if((typeOfOperation >= 33) && (typeOfOperation < 66)) {
+        if ((typeOfOperation >= 33) && (typeOfOperation < 66)) {
             console.log('Question: ' + randomNumber1 + '-' + randomNumber2);
             resultOfExpression = randomNumber1 - randomNumber2;
         }
 
-        if((typeOfOperation >= 66) && (typeOfOperation <= 100)) {
+        if ((typeOfOperation >= 66) && (typeOfOperation <= 100)) {
             console.log('Question: ' + randomNumber1 + '*' + randomNumber2);
             resultOfExpression = randomNumber1 * randomNumber2;
         }
@@ -124,7 +128,7 @@ const euclidAlgorithm = (num1, num2) => {
 const brainGcdGame = (nameOfGamer) => {
     let numberOfGoodAnswer = 0;
 
-    for(let i = 0; i < 3; i += 1) {
+    for (let i = 0; i < 3; i += 1) {
         let resultOfExpression = 0; 
         let randomNumber1 = Math.floor(Math.random() * 100) + 1;
         let randomNumber2 = Math.floor(Math.random() * 100) + 1;
@@ -156,7 +160,7 @@ const brainProgressionGame = (nameOfGamer) => {
     let numberOfGoodAnswer = 0;
     
 
-    for(let i = 0; i < 3; i += 1) {
+    for (let i = 0; i < 3; i += 1) {
         let arithmeticProgression = 0;
         let arithmProgressString;
         let arithmProgressionMassive = [];
@@ -197,4 +201,51 @@ const brainProgressionGame = (nameOfGamer) => {
     }
 };
 
-export { whatIsYourName, questionOfGame, brainCalcGame, brainEvenGame, brainGcdGame, brainProgressionGame };
+
+const brainPrimeGame = (nameOfGamer) => {
+    let numberOfGoodAnswer = 0;
+
+    for (let a = 0; a < 3; a += 1) {
+        let randomNumber = Math.floor(Math.random() * (100 - 2) + 2);
+        let flagPrime = true;
+
+        // проверка: является ли случайно сгенерированное число простым
+        for (let i = 2; i <= randomNumber - 1; i += 1) {
+            if (randomNumber % i === 0) {
+                flagPrime = false;
+                break;
+            }
+        }
+
+        console.log('Question: ' + randomNumber);
+        let userAnswer = readlineSync.question('Your answer: ');
+
+        if ((userAnswer === 'yes') && (flagPrime === true)) {
+            console.log('Correct!');
+            numberOfGoodAnswer += 1;
+        } 
+        
+        if ((userAnswer === 'no') && (flagPrime === true)) {
+            console.log("'no' is wrong answer ;(. Correct answer was 'yes'.");
+            console.log("Let's try again, " + nameOfGamer + '!');
+        } 
+
+        if ((userAnswer === 'yes') && (flagPrime === false)) {
+            console.log("'yes' is wrong answer ;(. Correct answer was 'no'.");
+            console.log("Let's try again, " + nameOfGamer + '!');
+        } 
+
+        if ((userAnswer === 'no') && (flagPrime === false)) {
+            console.log('Correct!');
+            numberOfGoodAnswer += 1;
+        } 
+
+    }
+
+    if (numberOfGoodAnswer === 3) {
+        console.log("Congratulations, " + nameOfGamer + '!');
+    }
+
+};
+
+export { whatIsYourName, questionOfGame, brainCalcGame, brainEvenGame, brainGcdGame, brainProgressionGame, brainPrimeGame };
