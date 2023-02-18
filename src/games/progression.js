@@ -25,7 +25,7 @@ const brainProgressionGame = () => {
   arithmProgressString = arithmeticProgression;
 
   for (let i = 0; i < 9; i += 1) {
-    arithmeticProgression = arithmeticProgression + stepOfProgress;
+    arithmeticProgression += stepOfProgress;
     arithmProgressionMassive.push(arithmeticProgression);
   }
 
@@ -33,7 +33,7 @@ const brainProgressionGame = () => {
   arithmProgressionMassive[hiddenElement] = '..';
 
   for (let a = 0; a < 9; a += 1) {
-    arithmProgressString = arithmProgressString + ' ' + arithmProgressionMassive[a];
+    arithmProgressString = `${arithmProgressString} ${arithmProgressionMassive[a]}`;
   }
 
   question(arithmProgressString);

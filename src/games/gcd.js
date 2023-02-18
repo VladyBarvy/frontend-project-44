@@ -6,14 +6,16 @@ console.log('Find the greatest common divisor of given numbers.');
 
 const euclidAlgorithm = (num1, num2) => {
   let resultOfCalculation = 0;
-  while ((num1 !== 0) && (num2 !== 0)) {
-    if (num1 > num2) {
-      num1 %= num2;
+  let workingNum1 = num1;
+  let workingNum2 = num2;
+  while ((workingNum1 !== 0) && (workingNum2 !== 0)) {
+    if (workingNum1 > workingNum2) {
+      workingNum1 %= workingNum2;
     } else {
-      num2 %= num1;
+      workingNum2 %= workingNum1;
     }
   }
-  resultOfCalculation = num1 + num2;
+  resultOfCalculation = workingNum1 + workingNum2;
   return resultOfCalculation;
 };
 
