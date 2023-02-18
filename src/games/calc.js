@@ -1,9 +1,8 @@
-import { whatIsYourName } from '../cli.js';
+import whatIsYourName from '../cli.js';
 import { randomNumber, question, checkingAnswers } from '../index.js';
 
 const userName = whatIsYourName();
 console.log('What is the result of the expression?');
-
 
 const randomOperation = () => {
   const operatStyle = ['+', '-', '*'];
@@ -11,11 +10,10 @@ const randomOperation = () => {
   return operatStyle[operation];
 };
 
-
-const brainCalcGame = (a = randomNumber(), b = randomNumber(), typeOfOperation = randomOperation()) => {
-  question(`${a} ${typeOfOperation} ${b}`);
+const brainCalcGame = (a = randomNumber(), b = randomNumber(), typeOfOper = randomOperation()) => {
+  question(`${a} ${typeOfOper} ${b}`);
   let correctAnswer = 0;
-  switch (typeOfOperation) {
+  switch (typeOfOper) {
     case '+':
       correctAnswer = a + b;
       break;
@@ -25,9 +23,9 @@ const brainCalcGame = (a = randomNumber(), b = randomNumber(), typeOfOperation =
     case '*':
       correctAnswer = a * b;
       break;
-    default: 
+    default:
   }
   checkingAnswers(brainCalcGame, userName, correctAnswer);
 };
 
-export { brainCalcGame };
+export default brainCalcGame;

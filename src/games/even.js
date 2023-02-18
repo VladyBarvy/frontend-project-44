@@ -1,12 +1,11 @@
-import { whatIsYourName } from '../cli.js';
+import whatIsYourName from '../cli.js';
 import { randomNumber, question, checkingAnswers } from '../index.js';
 
 const userName = whatIsYourName();
 console.log('Answer "yes" if the number is even, otherwise answer "no".');
 
-
 const brainEvenGame = () => {
-  let number = randomNumber();
+  const number = randomNumber();
   question(number);
   let correctAnswer = '';
   if (number % 2 === 0) {
@@ -17,4 +16,4 @@ const brainEvenGame = () => {
   checkingAnswers(brainEvenGame, userName, correctAnswer);
 };
 
-export { brainEvenGame };
+export default brainEvenGame;

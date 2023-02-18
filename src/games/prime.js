@@ -1,11 +1,11 @@
-import { whatIsYourName } from '../cli.js';
+import whatIsYourName from '../cli.js';
 import { randomNumber, question, checkingAnswers } from '../index.js';
 
 const userName = whatIsYourName();
 console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
 
 const brainPrimeGame = () => {
-  let number = randomNumber();
+  const number = randomNumber();
   question(number);
   let correctAnswer = '';
   if (number > 1) {
@@ -23,4 +23,4 @@ const brainPrimeGame = () => {
   checkingAnswers(brainPrimeGame, userName, correctAnswer);
 };
 
-export { brainPrimeGame };
+export default brainPrimeGame;
