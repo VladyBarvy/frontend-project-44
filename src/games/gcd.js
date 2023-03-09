@@ -5,18 +5,10 @@ const userName = whatIsYourName();
 console.log('Find the greatest common divisor of given numbers.');
 
 const euclidAlgorithm = (num1, num2) => {
-  let resultOfCalculation = 0;
-  let workingNum1 = num1;
-  let workingNum2 = num2;
-  while ((workingNum1 !== 0) && (workingNum2 !== 0)) {
-    if (workingNum1 > workingNum2) {
-      workingNum1 %= workingNum2;
-    } else {
-      workingNum2 %= workingNum1;
-    }
+  if (!num2) {
+    return num1;
   }
-  resultOfCalculation = workingNum1 + workingNum2;
-  return resultOfCalculation;
+  return euclidAlgorithm(num2, num1 % num2);
 };
 
 const brainGcdGame = (firstNum = randomNumber(), secondNum = randomNumber()) => {

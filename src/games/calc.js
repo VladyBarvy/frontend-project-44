@@ -24,6 +24,7 @@ const brainCalcGame = (a = randomNumber(), b = randomNumber(), typeOfOper = rand
       correctAnswer = a * b;
       break;
     default:
+      console.log('Error! Something wrong!');
   }
   checkingAnswers(brainCalcGame, userName, correctAnswer);
 };

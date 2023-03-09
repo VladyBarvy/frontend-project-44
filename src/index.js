@@ -15,7 +15,7 @@ const randomNumber = () => {
 };
 
 let trueAnswerCounter = 0;
-const i = 3;
+const roundsToWin = 3;
 
 const checkingAnswers = (func, userName, correctAnswer) => {
   const answerOfUser = userAnswer();
@@ -23,9 +23,9 @@ const checkingAnswers = (func, userName, correctAnswer) => {
   if (correctAnswerTheQuastion === answerOfUser) {
     console.log('Correct!');
     trueAnswerCounter += 1;
-    if (trueAnswerCounter < i) {
+    if (trueAnswerCounter < roundsToWin) {
       func();
-    } else if (trueAnswerCounter === i) {
+    } else if (trueAnswerCounter === roundsToWin) {
       console.log(`Congratulations, ${userName}!`);
     }
   } else {

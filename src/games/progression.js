@@ -9,22 +9,22 @@ const brainProgressionGame = () => {
   const minOfStart = 2;
   const maxOfStep = 10;
   const minOfStep = 2;
-  const maxOfHidEl = 9;
-  const minOfHidEl = 1;
+
 
   let arithmeticProgression = 0;
   let arithmProgressString;
   const arithmProgressionMassive = [];
   let controlHiddenElement = 0;
+  let lengthOfProgression = 9;
 
   const startNumberOfProgress = Math.floor(Math.random() * (maxOfStart - minOfStart) + minOfStart);
   const stepOfProgress = Math.floor(Math.random() * (maxOfStep - minOfStep) + minOfStep);
-  const hiddenElement = Math.floor(Math.random() * (maxOfHidEl - minOfHidEl) + minOfHidEl);
+  const hiddenElement = Math.floor(Math.random() * lengthOfProgression);
 
   arithmeticProgression = startNumberOfProgress;
   arithmProgressString = arithmeticProgression;
 
-  for (let i = 0; i < 9; i += 1) {
+  for (let i = 0; i < lengthOfProgression; i += 1) {
     arithmeticProgression += stepOfProgress;
     arithmProgressionMassive.push(arithmeticProgression);
   }
@@ -32,7 +32,7 @@ const brainProgressionGame = () => {
   controlHiddenElement = arithmProgressionMassive[hiddenElement];
   arithmProgressionMassive[hiddenElement] = '..';
 
-  for (let a = 0; a < 9; a += 1) {
+  for (let a = 0; a < lengthOfProgression; a += 1) {
     arithmProgressString = `${arithmProgressString} ${arithmProgressionMassive[a]}`;
   }
 
