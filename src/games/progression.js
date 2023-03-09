@@ -10,12 +10,11 @@ const brainProgressionGame = () => {
   const maxOfStep = 10;
   const minOfStep = 2;
 
-
   let arithmeticProgression = 0;
   let arithmProgressString;
   const arithmProgressionMassive = [];
   let controlHiddenElement = 0;
-  let lengthOfProgression = 9;
+  const lengthOfProgression = 9;
 
   const startNumberOfProgress = Math.floor(Math.random() * (maxOfStart - minOfStart) + minOfStart);
   const stepOfProgress = Math.floor(Math.random() * (maxOfStep - minOfStep) + minOfStep);
