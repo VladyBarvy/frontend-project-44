@@ -1,7 +1,7 @@
 # Тесты
 [![Actions Status](https://github.com/VladyBarvy/frontend-project-44/workflows/hexlet-check/badge.svg)](https://github.com/VladyBarvy/frontend-project-44/actions) <span style="font-size: 18px;"> - Hexlet tests and linter status.</span>
 
-[![Maintainability] (https://api.codeclimate.com/v1/badges/6ca230844b40256cf9dd/maintainability)](https://codeclimate.com/github/VladyBarvy/frontend-project-44/maintainability) <span style="font-size: 18px;"> - Оценка Maintainability от Codeclimate.</span>
+<a href="https://codeclimate.com/github/VladyBarvy/frontend-project-44/maintainability"><img src="https://api.codeclimate.com/v1/badges/6ca230844b40256cf9dd/maintainability" /></a> <span style="font-size: 18px;"> - Оценка Maintainability от Codeclimate.</span>
 
 
 # Описание
@@ -40,7 +40,7 @@
 3) Выполнить команду "make install" для установки всех библиотек необходимых для работы игр;
 
 ```
-git clone git@github.com:Felarn/frontend-project-44.git
+git clone https://github.com/VladyBarvy/frontend-project-44.git
 cd frontend-project-44/
 make install
 ```
